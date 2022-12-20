@@ -66,23 +66,13 @@ class Library {
 		}
 	}
 	findBookBy(type, value) {
-		let searchItem = this.books.find(item => item[type] === value);
-		if (searchItem) {
-			return searchItem;
-		} else {
-			return null;
-		}
+		const searchItem = this.books.find(item => item[type] === value);
+		return searchItem || null;
 	}
 	giveBookByName(bookName) {
-		const searcIndex = this.books.findIndex(item => item.name === bookName);
-		if (searcIndex !== -1) {
-			let givenBook = this.books[searcIndex];
-			this.books.splice(searcIndex, 1);
-			return givenBook;
-		} else {
-			return null;
-		}
-		
+		const searchItem = this.books.find(item => item.name === bookName);
+		this.books = this.books.filter((item) => item.name !== bookName);
+		return searchItem || null;
 	}
 }
 
